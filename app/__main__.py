@@ -3,8 +3,8 @@ import data_processing as data_processing
 
 
 
-print("Start data processing")
+print("------Start data processing------")
 data_processing.main()
-print("Start data mining")
+print("------Start data mining------")
 data_mining.main()
-print("Job done")
+print("------Job done------")

@@ -77,9 +77,11 @@ def main():
     title_file_A = "titles_A.txt"
     title_file_B = "titles_B.txt"
 
+    print("Process the data")
     class_A = process_file(title_file_A)
     class_B = process_file(title_file_B)
 
+    print("Extract information gain")
     #------ Compute and Sort information gain ------#
     token_information = compute_gain(class_A,class_B)
     sorted_tokens = map(lambda e : e[0],token_information)

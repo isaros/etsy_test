@@ -37,7 +37,7 @@ def listing_to_querry_string(listing):
 
 ## Preprocess and clean title
 # NOTE :
-# I was not sure about the html entities whether it as to handle html tag as well.
+# I was not sure about the html entities whether it has to handle html tag as well.
 # Given the context I considered that it was not need.
 # For now I remove every non-alphanumeric characters not only leading and trailing
 # TODO :
@@ -84,7 +84,6 @@ def fetch_listings_title_from_api(listings):
             request,
             key_string,
             title_cleaning)
-    print("Finish fetching data")
     return titles
 
 def main():
@@ -92,9 +91,11 @@ def main():
     # 1 - Listings fecting from file
     # 2 - DATA RETRIEVAL FROM THE API
     # 3 - DATA PROCESSING
-    print(len(read_file("listings_A.txt")))
+    print("Request the API to get the titles")
     class_A = fetch_listings_title_from_api(read_file("listings_A.txt"))
     class_B = fetch_listings_title_from_api(read_file("listings_B.txt"))
+    print("Finished fetching data")
+
 
     #------ SAVE DATA IN A NEW FILE ------#
     output_A = "titles_A.txt"
@@ -103,6 +104,8 @@ def main():
     utils.save_in_file(output_B, class_B)
     # NOTE : Another possibility would be to save (with open in append mode) after every request
     # That would avoid to loop again over the all list and would save some memory
+    print("Data saved in files {0} and {1}".format(output_A,output_B))
+
 
 if __name__ == '__main__':
     main()
