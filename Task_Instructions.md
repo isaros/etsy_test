@@ -8,38 +8,36 @@ This is a two-part test of general coding skills, with a data mining/NLP slant.
 
 We provide two sets of Etsy listing IDs. In the first part, you must download all the corresponding listing titles from our public API. In the second part, you must produce a list of the top 100 most discriminative terms, i.e. the ones that would be most helpful for a learning algorithm trying to distinguish the two sets of listings. More details on each part are provided below.
 
-## Requirements
-* python 2.7
+This exercise should take you less than a day. If you feel that it's likely to take a day or more to complete, please wrap up sooner, and leave comments indicating which parts need completing or finessing. We don't want you to waste days on this!
 
-## How to Run the program
-* `cd etsy_test/app`
-* For only the data processing `python -m data_processing`
-* For only the data mining `python -m data_mining`
-* For the whole process `python -m __main__`
+Please read all the following instructions carefully.
 
-## Test
-* `cd etsy_test`
-* `python -m test.test`
+## What to provide
 
-## Solution
+We'd like to see the following things, archived into a zip or tar.gz file:
 
-I choose to divide the work into two parts:
-* First the data fetching and processing
-    * The IDs from the file are read and stored in a list before be use to fetch the information through the API
-    * Iterations on the ID list is processed and the API is called by batches on its limit of resources (i.e 100 resources at a time).
-    * The result is decoded processed and clean before being stored
-    * Eventually we iterate over the titles list to save then in a file.
+### A readme file (text or markdown)
 
-    I decided not to save in the file at every iteration but only at the end because I thought that this part of the program (the output lists) could be directly given to the data mining part. In case we don't want to handle files in between. But in the given solution that reduces the performance of the program.
-* Then the data mining part :
-    * Everything is explained in detail in the code. But the general idea is to find a measure of how discriminatory a feature (here a token) is. Which means how this feature helps me to distinguish between class A and class B. For that, we use the very classic idea of entropy in information theory.
-    * It would be interesting to see now the importance of these top 100 features to distinguish the class A or B. And then build a decision tree using these feature to do prediction afterward.
+This should cover:
 
-# Context of the solution
+* How to compile (if applicable) and run your program(s)
+* How your solution works, at a high level
+* Why you chose this approach in particular
+* What drawbacks there are with this approach, if any
+
+Don't go overboard -- a few paragraphs of text is fine, but make sure the instructions are clear.
 
 ### The word list
 
 This should be a text file called `results.txt` with 100 terms, one on each line, in descending order of discriminative power. See the detailed instructions on part 2 below to understand what we mean by that.
+
+### Your solution's source code
+
+Remember to provide the source code for both parts 1 and 2, even though you don't need to provide the output data from part 1.
+
+**Note:** If you prefer, you can submit a single program that tackles both part 1 and part 2. But we would recommend tackling the two parts separately, and writing the output from part 1 to a temporary file. Otherwise you will need to re-download the data each time.
+
+If there are places in your code where you would have made an improvement, given more time, please add a comment to say so. Then at least we know you considered this option.
 
 ## Restrictions
 
@@ -48,6 +46,21 @@ Please use one of the following languages: Java, Scala or Python. You can use di
 **Don't** use any third-party libraries beyond those which are provided with your chosen language's standard library. **Exception:** If you are using Java or Scala for part 1, you may use a third-party library for HTML entity decoding, since there isn't a method for this in the JDK or Scala standard library.
 
 Your code must compile (if applicable) and run on a typical Mac or Linux machine without modification. Our developer machines use JDK 7 and 8, Scala 2.10 and Python 2.7 as standard, so please target one of these versions.
+
+## Assessment criteria
+
+You will be assessed on the following criteria:
+
+* Following the instructions!
+* Correctness of top term list
+* Solution design
+* Efficiency of chosen algorithms
+* Code quality, style and presentation
+* Clarity of documentation (i.e. readme and code comments)
+
+Please write as if you were developing code for yourself and others to maintain, not a throwaway hack to generate a one-off set of results. We want to see what you'd be like to work with, in the long term.
+
+Note that if your solution produces a completely wrong top term list, the chances are that we won't even bother looking at the source code, so it's important to get this right.
 
 ## Instructions
 
@@ -138,3 +151,4 @@ teal
 ```
 
 In this case, `unicorn-hair` is the most powerful discriminator, and `teal` is the 100th most powerful.
+
